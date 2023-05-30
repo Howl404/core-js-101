@@ -186,17 +186,8 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  */
 function roundToPowerOfTen(/*  num, pow */) {
   throw new Error('Not implemented');
-  // const number = [...num.toString()];
-  // const round = [];
-  // for (let i = number.length - 1; i > pow; i -= 1) {
-  //   console.log(number[i]);
-  //   round.push(number[i]);
-  // }
-  // const result = Math.round(Number(round.reverse().join('')));
-  // console.log(Math.round(result));
 }
 
-roundToPowerOfTen(1234, 1);
 
 /**
  * Returns true is the number is prime; otherwise false.
