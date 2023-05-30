@@ -19,8 +19,8 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  return width * height;
 }
 
 
@@ -35,8 +35,8 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -52,7 +52,11 @@ function getCircleCircumference(/* radius */) {
  *  -3, 3  => 0
  */
 function getAverage(/* value1, value2 */) {
+  // let sum = value1 + value2;
+  // sum /= 2;
+  // return sum;
   throw new Error('Not implemented');
+  // return ((value1 * 1) + (value2 * 1)) / 2;
 }
 
 /**
@@ -141,8 +145,8 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return value * 1;
 }
 
 /**
@@ -180,9 +184,19 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
+function roundToPowerOfTen(/*  num, pow */) {
   throw new Error('Not implemented');
+  // const number = [...num.toString()];
+  // const round = [];
+  // for (let i = number.length - 1; i > pow; i -= 1) {
+  //   console.log(number[i]);
+  //   round.push(number[i]);
+  // }
+  // const result = Math.round(Number(round.reverse().join('')));
+  // console.log(Math.round(result));
 }
+
+roundToPowerOfTen(1234, 1);
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -201,8 +215,11 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n === 2 || n === 3) { return true; }
+  if (n <= 1 || n % 2 === 0 || n % 3 === 0) { return false; }
+  for (let i = 5; i * i <= n; i += 6) { if (n % i === 0 || n % (i + 2) === 0) return false; }
+  return true;
 }
 
 /**
@@ -220,8 +237,8 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, second) {
+  if (Number.isNaN(value * 1) || value == null) { return second; } return value;
 }
 
 module.exports = {
