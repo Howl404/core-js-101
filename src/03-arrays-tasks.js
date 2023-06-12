@@ -494,8 +494,8 @@ function getIntervalArray(start, end) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array.from(new Set(arr));
 }
 
 /**
@@ -528,8 +528,20 @@ function distinct(/* arr */) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  return array.reduce((resultMap, item) => {
+    const key = keySelector(item);
+    const value = valueSelector(item);
+
+    if (resultMap.has(key)) {
+      const valuesArray = resultMap.get(key);
+      valuesArray.push(value);
+    } else {
+      resultMap.set(key, [value]);
+    }
+
+    return resultMap;
+  }, new Map());
 }
 
 
@@ -546,10 +558,9 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  return arr.map((x) => childrenSelector(x)).flat();
 }
-
 
 /**
  * Returns an element from the multidimensional array by the specified indexes.
@@ -586,8 +597,14 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length % 2 === 0) {
+    return arr.slice(Math.floor(arr.length / 2)).concat(arr.slice(0, Math.floor(arr.length / 2)));
+  } return arr.slice(Math.floor(arr.length / 2) + 1)
+    .concat(
+      arr.slice(Math.floor(arr.length / 2), Math.floor(arr.length / 2) + 1),
+      arr.slice(0, Math.floor(arr.length / 2)),
+    );
 }
 
 
